@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Search, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { Input } from "./ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 // Navigation links for both desktop and mobile menus
 const NAV_ITEMS = [
@@ -29,31 +30,30 @@ const Navbar = () => {
 						<SheetTrigger className="p-2">
 							<Menu />
 						</SheetTrigger>
-						<SheetContent side="left" className="flex flex-col">
-							<h2 className="font-bold text-xl mb-6">Menu</h2>
-							<div className="flex flex-col space-y-4">
+						<SheetContent side="left" className="flex flex-col flex-1 gap-0">
+							<div className="flex-[0.1] flex flex-col items-center justify-center">
+								<h2 className="font-bold text-2xl">SHOP.CO</h2>
+							</div>
+							<div className="flex flex-col items-start justify-start flex-[0.8]">
 								{NAV_ITEMS.map((item) => (
 									<Link
 										key={item.label}
 										href={item.href}
-										className="text-lg hover:text-gray-600 transition-colors"
+										className="font-medium hover:text-gray-600 transition-colors py-2 px-4"
 									>
 										{item.label}
 									</Link>
 								))}
-								<div className="h-px bg-gray-200 my-2"></div>
-								<Link
-									href="/account"
-									className="text-lg hover:text-gray-600 transition-colors"
-								>
-									My Account
-								</Link>
-								<Link
-									href="/cart"
-									className="text-lg hover:text-gray-600 transition-colors"
-								>
-									Cart
-								</Link>
+							</div>
+							<div className="flex flex-[0.1] items-center justify-start px-5">
+								<Avatar>
+									<AvatarImage src="https://picsum.photos/200" />
+									<AvatarFallback>US</AvatarFallback>
+								</Avatar>
+								<div className="ml-5 flex flex-col">
+									<h1 className="text-sm">John Doe</h1>
+									<p className="text-xs text-gray-500">john@doe.com</p>
+								</div>
 							</div>
 						</SheetContent>
 					</Sheet>
@@ -86,7 +86,7 @@ const Navbar = () => {
 					<div className="hidden md:flex relative items-center bg-gray-100 rounded-full px-4 py-2 w-72">
 						<Search className="w-4 h-4 text-gray-500" />
 						<Input
-							className="w-full border-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 pl-2 h-8"
+							className="!shadow-none w-full border-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 pl-2 h-8"
 							placeholder="Search for products..."
 						/>
 					</div>
