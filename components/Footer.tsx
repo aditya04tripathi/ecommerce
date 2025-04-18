@@ -76,7 +76,7 @@ const Footer: React.FC = () => (
 				<div className="space-y-3 md:col-span-4 md:pr-8">
 					<h2 className="text-2xl font-black">SHOP.CO</h2>
 					<p className="text-muted-foreground text-sm max-w-md">
-						We have clothes that suits your style and which you're proud to
+						We have clothes that suits your style and which you&apos;re proud to
 						wear. From women to men.
 					</p>
 					<div className="flex gap-4">
