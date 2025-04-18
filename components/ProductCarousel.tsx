@@ -55,7 +55,7 @@ const ProductCarousel = (
 			<h1 className="text-center text-3xl font-black pb-7">{title}</h1>
 
 			{/* Mobile view - Carousel */}
-			<div className="md:hidden">
+			<div className="md:hidden px-5">
 				<Carousel>
 					<CarouselContent>
 						{SAMPLE_PRODUCTS.map((product, idx) => (
@@ -162,7 +162,7 @@ const ProductCarousel = (
 
 			<Button
 				variant={"outline"}
-				className="w-full md:w-fit md:mx-auto rounded-full mx-auto mt-8 px-12"
+				className="w-[calc(100%-40px)] md:w-fit md:mx-auto rounded-full mx-auto mt-8 px-12"
 			>
 				View All
 			</Button>

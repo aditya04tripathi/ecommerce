@@ -48,7 +48,7 @@ const PAYMENTS = ["visa", "mastercard", "paypal", "applepay", "googlepay"];
 
 const Footer: React.FC = () => (
 	<>
-		<div className="container w-full mx-auto mt-10 relative z-10 -mb-32">
+		<div className="container w-full mx-auto mt-10 relative px-5 z-10 -mb-32">
 			<div className="p-8 rounded-lg bg-black">
 				<div className="md:flex md:items-center md:justify-between gap-10">
 					<h1 className="text-white text-4xl font-black uppercase leading-tight md:w-1/2 md:pr-4">
@@ -76,7 +76,7 @@ const Footer: React.FC = () => (
 				<div className="space-y-3 md:col-span-4 md:pr-8">
 					<h2 className="text-2xl font-black">SHOP.CO</h2>
 					<p className="text-muted-foreground text-sm max-w-md">
-						We have clothes that suits your style and which you&apos;re proud to
+						We have clothes that suits your style and which you're proud to
 						wear. From women to men.
 					</p>
 					<div className="flex gap-4">
