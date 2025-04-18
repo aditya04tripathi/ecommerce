@@ -37,7 +37,7 @@ const HeroSection = () => {
 					{STATS.map((item) => (
 						<div
 							key={item.label}
-							className="flex flex-col justify-center items-center mr-8 mb-2 md:mb-0 md:items-start"
+							className="flex flex-col justify-center items-center mb-2 md:mb-0 md:items-start"
 						>
 							<span className="font-medium text-lg md:text-2xl">
 								{item.value}
