@@ -12,7 +12,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: "E-Commerce",
+	title: {
+		default: "Home | SHOPCO",
+		template: "%s | SHOPCO",
+	},
 	description: "An E-Commerce application built with Next.js and Sanity",
 };
 

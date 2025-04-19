@@ -36,6 +36,30 @@ import {
 } from "@/components/ui/sheet";
 import Filters from "@/components/Filters";
 import { PageProps } from "@/.next/types/app/page";
+import { Metadata } from "next";
+
+export const generateMetadata = async ({
+	params,
+}: PageProps): Promise<Metadata> => {
+	const { category } = await params;
+
+	return {
+		title: `${category[0].toUpperCase()}${category.slice(1)}`,
+		description: `Explore our wide range of products in the ${category} category.`,
+		keywords: `${category}, online store, shopping, fashion, trends, styles`,
+		viewport: "width=device-width, initial-scale=1",
+		robots: {
+			index: true,
+			follow: true,
+		},
+		authors: [
+			{
+				name: "Aditya Tripathi",
+				url: "https://linkedin.com/in/aditya-tripathi-at04",
+			},
+		],
+	};
+};
 
 const CategoryPage = async ({ params, searchParams }: PageProps) => {
 	const { category } = await params;
