@@ -72,6 +72,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 3.5,
 			discount: null,
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 2,
@@ -81,6 +82,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 4.5,
 			discount: null,
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 3,
@@ -90,6 +92,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 5.0,
 			discount: "-30%",
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 4,
@@ -99,6 +102,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 3.6,
 			discount: "-20%",
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 5,
@@ -108,6 +112,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 4.2,
 			discount: null,
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 6,
@@ -117,6 +122,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 4.6,
 			discount: "-30%",
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 7,
@@ -126,6 +132,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 4.0,
 			discount: null,
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 8,
@@ -135,6 +142,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 4.8,
 			discount: null,
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 9,
@@ -144,6 +152,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 3.8,
 			discount: "-15%",
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 		{
 			id: 10,
@@ -153,6 +162,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 			rating: 4.5,
 			discount: null,
 			image: "https://picsum.photos/500",
+			href: "/product/1",
 		},
 	];
 
