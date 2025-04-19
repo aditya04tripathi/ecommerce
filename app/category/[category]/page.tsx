@@ -35,17 +35,13 @@ import {
 	SheetTitle,
 } from "@/components/ui/sheet";
 import Filters from "@/components/Filters";
+import { PageProps } from "@/.next/types/app/page";
 
-const CategoryPage = ({
-	params,
-}: {
-	params: {
-		category: string;
-	};
-	searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const CategoryPage = async ({ params, searchParams }: PageProps) => {
+	const { category } = await params;
+
 	const formattedCategoryName = () => {
-		return `${params.category[0].toUpperCase()}${params.category.slice(1)}`;
+		return `${category[0].toUpperCase()}${category.slice(1)}`;
 	};
 
 	// Sample products with more realistic data
