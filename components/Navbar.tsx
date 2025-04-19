@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Input } from "./ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-// Navigation links for both desktop and mobile menus
 const NAV_ITEMS = [
 	{ label: "Shop", href: "/shop" },
 	{ label: "On Sale", href: "/sale" },
@@ -21,7 +20,6 @@ const Navbar = () => {
 				<Link href="/signup" className="font-medium ml-1 underline">
 					Sign Up Now
 				</Link>
-				<button className="absolute right-4 top-1/2 -translate-y-1/2">✕</button>
 			</div>
 
 			<nav className="px-5 md:px-10 border-b h-20 flex items-center justify-between bg-white sticky top-0 z-50">

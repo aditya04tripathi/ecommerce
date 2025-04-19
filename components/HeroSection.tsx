@@ -29,7 +29,7 @@ const HeroSection = () => {
 					designed to bring out your individuality and cater to your sense of
 					style.
 				</p>
-				<Button className="mx-auto md:mx-0 w-[calc(100vw-40px)] md:w-fit md:px-10 rounded-full mb-5">
+				<Button className="cursor-pointer mx-auto md:mx-0 w-[calc(100vw-40px)] md:w-fit md:px-10 rounded-full mb-5">
 					Shop Now
 				</Button>
 
@@ -61,11 +61,18 @@ const HeroSection = () => {
 			</div>
 
 			<div className="p-2.5 bg-foreground flex justify-center items-center flex-wrap gap-2.5 w-full md:hidden">
-				{["Versace", "Gucci", "Zara", "Prada", "Chanel"].map((brand) => (
-					<span key={brand} className="text-background text-3xl">
-						{brand}
-					</span>
-				))}
+				{["versace.jpg", "gucci.jpg", "zara.jpg", "prada.jpg", "ck.webp"].map(
+					(brand) => (
+						<Image
+							alt={brand.split(".")[0]}
+							src={`/brands/${brand}`}
+							key={brand}
+							width={1080}
+							height={1080}
+							className="w-1/4 h-1/4 object-cover object-center rounded-md"
+						/>
+					)
+				)}
 			</div>
 		</div>
 	);

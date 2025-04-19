@@ -1,12 +1,10 @@
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
-import { Card, CardContent } from "./ui/card";
-import Image from "next/image";
-import { Star } from "lucide-react";
 import { Button } from "./ui/button";
+import ProductCard, { Product } from "./ProductCard";
 
 // Sample product data to match the image
-const SAMPLE_PRODUCTS = [
+const SAMPLE_PRODUCTS: Product[] = [
 	{
 		id: 1,
 		name: "T-shirt with Tape Details",
@@ -54,115 +52,27 @@ const ProductCarousel = (
 		<div className="container mx-auto flex flex-col pt-10">
 			<h1 className="text-center text-3xl font-black pb-7">{title}</h1>
 
-			{/* Mobile view - Carousel */}
 			<div className="md:hidden px-5">
 				<Carousel>
 					<CarouselContent>
 						{SAMPLE_PRODUCTS.map((product, idx) => (
 							<CarouselItem key={idx} className="basis-[75%] sm:basis-[45%]">
-								<Card className="w-full !p-0 border-none shadow-none">
-									<CardContent className="!p-0 relative">
-										<Image
-											alt={product.name}
-											src={product.image || "https://picsum.photos/500"}
-											width={500}
-											height={500}
-											className="w-full h-auto overflow-clip aspect-square object-contain"
-										/>
-										{product.discount && (
-											<span className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-												{product.discount}
-											</span>
-										)}
-										<div className="my-2 flex flex-col space-y-1">
-											<h1 className="font-bold">{product.name}</h1>
-											<div className="flex gap-1 items-center">
-												{[1, 2, 3, 4, 5].map((_, idx) => (
-													<Star
-														key={idx}
-														size={14}
-														className={
-															idx < Math.floor(product.rating)
-																? "fill-yellow-400 text-yellow-400"
-																: "text-gray-300"
-														}
-													/>
-												))}
-												<span className="text-muted-foreground text-xs font-light ml-2">
-													{product.rating}/5
-												</span>
-											</div>
-											<span className="flex items-center gap-1 font-medium">
-												<span>${product.price.toFixed(0)}</span>
-												{product.originalPrice > product.price && (
-													<span className="text-muted-foreground line-through font-light">
-														${product.originalPrice.toFixed(0)}
-													</span>
-												)}
-											</span>
-										</div>
-									</CardContent>
-								</Card>
+								<ProductCard product={product} />
 							</CarouselItem>
 						))}
 					</CarouselContent>
 				</Carousel>
 			</div>
 
-			{/* Desktop view - Grid */}
 			<div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 				{SAMPLE_PRODUCTS.map((product, idx) => (
-					<Card key={idx} className="w-full !p-0 border-none shadow-none">
-						<CardContent className="!p-0 relative">
-							<Image
-								alt={product.name}
-								src={product.image || "https://picsum.photos/500"}
-								width={500}
-								height={500}
-								className="w-full h-auto overflow-clip aspect-square object-contain p-4 hover:scale-105 transition-transform duration-300"
-							/>
-							{product.discount && (
-								<span className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-									{product.discount}
-								</span>
-							)}
-							<div className="my-3 flex flex-col space-y-1">
-								<h1 className="font-bold">{product.name}</h1>
-								<div className="flex gap-1 items-center">
-									{[1, 2, 3, 4, 5].map((_, idx) => (
-										<Star
-											key={idx}
-											size={14}
-											className={
-												idx < Math.floor(product.rating)
-													? "fill-yellow-400 text-yellow-400"
-													: "text-gray-300"
-											}
-										/>
-									))}
-									<span className="text-muted-foreground text-xs font-light ml-2">
-										{product.rating}/5
-									</span>
-								</div>
-								<span className="flex items-center gap-2 font-medium">
-									<span className="text-black text-lg">
-										${product.price.toFixed(0)}
-									</span>
-									{product.originalPrice > product.price && (
-										<span className="text-gray-400 line-through font-light">
-											${product.originalPrice.toFixed(0)}
-										</span>
-									)}
-								</span>
-							</div>
-						</CardContent>
-					</Card>
+					<ProductCard key={idx} product={product} />
 				))}
 			</div>
 
 			<Button
 				variant={"outline"}
-				className="w-[calc(100%-40px)] md:w-fit md:mx-auto rounded-full mx-auto mt-8 px-12"
+				className="cursor-pointer w-[calc(100%-40px)] md:w-fit md:mx-auto rounded-full mx-auto mt-8 px-12"
 			>
 				View All
 			</Button>

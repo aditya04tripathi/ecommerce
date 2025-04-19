@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "@/components/Footer";
 import ProductCarousel from "@/components/ProductCarousel";
 import HeroSection from "@/components/HeroSection";
 import BrandShowcase from "@/components/BrandShowcase";
@@ -13,7 +12,6 @@ const IndexPage = () => {
 			<ProductCarousel title="NEW ARRIVALS" />
 			<ProductCarousel title="TOP SELLING" />
 			<BrowseByStyle />
-			<Footer />
 		</>
 	);
 };
