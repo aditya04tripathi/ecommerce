@@ -26,7 +26,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+import { cn, formattedCategoryName } from "@/lib/utils";
 import {
 	Sheet,
 	SheetContent,
@@ -47,7 +47,6 @@ export const generateMetadata = async ({
 		title: `${category[0].toUpperCase()}${category.slice(1)}`,
 		description: `Explore our wide range of products in the ${category} category.`,
 		keywords: `${category}, online store, shopping, fashion, trends, styles`,
-		viewport: "width=device-width, initial-scale=1",
 		robots: {
 			index: true,
 			follow: true,
@@ -61,14 +60,9 @@ export const generateMetadata = async ({
 	};
 };
 
-const CategoryPage = async ({ params, searchParams }: PageProps) => {
+const CategoryPage = async ({ params }: PageProps) => {
 	const { category } = await params;
 
-	const formattedCategoryName = () => {
-		return `${category[0].toUpperCase()}${category.slice(1)}`;
-	};
-
-	// Sample products with more realistic data
 	const sampleProducts = [
 		{
 			id: 1,
@@ -171,7 +165,7 @@ const CategoryPage = async ({ params, searchParams }: PageProps) => {
 					</BreadcrumbItem>
 					<BreadcrumbSeparator />
 					<BreadcrumbItem>
-						<BreadcrumbPage>{formattedCategoryName()}</BreadcrumbPage>
+						<BreadcrumbPage>{formattedCategoryName(category)}</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
@@ -185,7 +179,9 @@ const CategoryPage = async ({ params, searchParams }: PageProps) => {
 				{/* Products Section */}
 				<div className={cn("flex flex-col gap-5 w-full md:flex-[0.75]")}>
 					<div className="flex justify-between items-center">
-						<h1 className="font-bold text-2xl">{formattedCategoryName()}</h1>
+						<h1 className="font-bold text-2xl">
+							{formattedCategoryName(category)}
+						</h1>
 
 						{/* Mobile Filter Button */}
 						<Sheet>

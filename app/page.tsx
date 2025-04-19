@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 	description:
 		"Welcome to our online store! Discover the latest trends and shop your favorite styles.",
 	keywords: "online store, shopping, fashion, trends, styles",
-	viewport: "width=device-width, initial-scale=1",
 	robots: {
 		index: true,
 		follow: true,
