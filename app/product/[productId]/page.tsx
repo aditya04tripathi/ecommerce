@@ -72,21 +72,35 @@ const ProductPage = async ({ params }: PageProps) => {
 			</Breadcrumb>
 
 			<div className="flex flex-col md:flex-row gap-8">
-				<div className="flex gap-6 flex-row flex-1 md:w-1/2">
-					<div className="flex flex-col justify-between gap-4 flex-[0.25]">
+				<div className="flex flex-col md:flex-row gap-4 md:gap-6 flex-1 md:w-1/2">
+					{/* Main image for mobile view */}
+					<div className="md:hidden w-full bg-gray-100 rounded-lg mb-2">
+						<Image
+							src="https://picsum.photos/1000"
+							alt={product.name}
+							height={1000}
+							width={1000}
+							className="object-cover rounded-lg w-full h-auto"
+							priority
+						/>
+					</div>
+
+					<div className="grid grid-cols-3 md:grid-cols-1 gap-2 md:gap-4 md:flex-[0.25]">
 						{product.images.map((img, index) => (
-							<div key={index} className="h-full relative">
+							<div key={index}>
 								<Image
 									src={img}
 									alt={`${product.name} view ${index + 1}`}
+									className="object-cover rounded-lg w-full h-full"
 									height={1000}
 									width={1000}
-									className="object-cover rounded-lg w-auto h-full"
 								/>
 							</div>
 						))}
 					</div>
-					<div className="flex-[0.75] bg-gray-100 rounded-lg">
+
+					{/* Main image for desktop view (hidden on mobile) */}
+					<div className="hidden md:block flex-[0.75] bg-gray-100 rounded-lg">
 						<Image
 							src="https://picsum.photos/1000"
 							alt={product.name}
@@ -173,7 +187,7 @@ const ProductPage = async ({ params }: PageProps) => {
 					<Separator className="my-5" />
 
 					<h3 className="font-medium mb-4">Choose Size</h3>
-					<div className="flex gap-3">
+					<div className="flex gap-3 flex-wrap">
 						{product.sizes.map((size) => (
 							<Button
 								key={size}
@@ -214,10 +228,10 @@ const ProductPage = async ({ params }: PageProps) => {
 			<Tabs defaultValue="details" className="mt-10 w-full">
 				<TabsList className="w-full">
 					<TabsTrigger className="flex-1 w-full" value="details">
-						Product Details
+						Details
 					</TabsTrigger>
 					<TabsTrigger className="flex-1 w-full" value="reviews">
-						Ratings & Reviews
+						Reviews
 					</TabsTrigger>
 					<TabsTrigger className="flex-1 w-full" value="faq">
 						FAQs
