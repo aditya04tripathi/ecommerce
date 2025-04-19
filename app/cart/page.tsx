@@ -18,7 +18,7 @@ const PRODUCTS = [
 		id: 1,
 		name: "Product 1",
 		price: 10.0,
-		imageUrl: "/images/product1.jpg",
+		imageUrl: "https://picsum.photos/500",
 		size: "Medium",
 		color: "White",
 		quantity: 1,
@@ -27,7 +27,7 @@ const PRODUCTS = [
 		id: 2,
 		name: "Product 2",
 		price: 20.0,
-		imageUrl: "/images/product2.jpg",
+		imageUrl: "https://picsum.photos/500",
 		size: "Large",
 		color: "Black",
 		quantity: 2,
@@ -36,7 +36,7 @@ const PRODUCTS = [
 		id: 3,
 		name: "Product 3",
 		price: 15.0,
-		imageUrl: "/images/product3.jpg",
+		imageUrl: "https://picsum.photos/500",
 		size: "Small",
 		color: "Red",
 		quantity: 1,
@@ -66,7 +66,7 @@ const CartPage = () => {
 							<div className="flex flex-1 justify-start items-center">
 								<Image
 									alt="logo"
-									src="https://picsum.photos/500"
+									src={product.imageUrl}
 									width={500}
 									height={500}
 									className="w-32 h-32 rounded-lg"
@@ -105,6 +105,7 @@ const CartPage = () => {
 											<Input
 												className="text-center !border-none !shadow-none text-muted-foreground w-8"
 												value={product.quantity}
+												readOnly
 											/>
 											<Button className="bg-transparent text-muted-foreground !rounded-none !shadow-none hover:text-primary-foreground">
 												+

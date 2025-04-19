@@ -13,6 +13,7 @@ const SAMPLE_PRODUCTS: Product[] = [
 		rating: 4.5,
 		discount: null,
 		image: "https://picsum.photos/1080",
+		href: "/product/1",
 	},
 	{
 		id: 2,
@@ -22,6 +23,7 @@ const SAMPLE_PRODUCTS: Product[] = [
 		rating: 3.5,
 		discount: "-20%",
 		image: "https://picsum.photos/1080",
+		href: "/product/1",
 	},
 	{
 		id: 3,
@@ -31,6 +33,7 @@ const SAMPLE_PRODUCTS: Product[] = [
 		rating: 4.5,
 		discount: null,
 		image: "https://picsum.photos/1080",
+		href: "/product/1",
 	},
 	{
 		id: 4,
@@ -40,6 +43,7 @@ const SAMPLE_PRODUCTS: Product[] = [
 		rating: 4.5,
 		discount: "-30%",
 		image: "https://picsum.photos/1080",
+		href: "/product/1",
 	},
 ];
 

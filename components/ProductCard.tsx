@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export interface Product {
 	id: number;
@@ -11,6 +14,7 @@ export interface Product {
 	rating: number;
 	discount: string | null;
 	image: string;
+	href: string;
 }
 
 interface ProductCardProps {
@@ -18,8 +22,13 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+	const router = useRouter();
+
 	return (
-		<Card className="w-full !p-0 border-none overflow-clip shadow-none">
+		<Card
+			onClick={() => router.push(product.href)}
+			className="w-full !p-0 border-none overflow-clip shadow-none cursor-pointer"
+		>
 			<CardContent className="!p-0 relative">
 				<Image
 					alt={product.name}
