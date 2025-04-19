@@ -1,7 +1,6 @@
 import { PageProps } from "@/.next/types/app/page";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -21,12 +20,7 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-	StarIcon,
-	MoreHorizontalIcon,
-	CheckIcon,
-	ShoppingCartIcon,
-} from "lucide-react";
+import { StarIcon, CheckIcon, ShoppingCartIcon } from "lucide-react";
 
 const ProductPage = async ({ params }: PageProps) => {
 	const { productId } = await params;
@@ -360,10 +354,10 @@ const ProductPage = async ({ params }: PageProps) => {
 								</div>
 
 								<p className="mt-4 text-gray-600">
-									"I absolutely love this t-shirt! The design is unique and the
-									fabric feels so comfortable. As a fellow designer, I
-									appreciate the attention to detail. It's become my favorite
-									go-to shirt."
+									&ldquo;I absolutely love this t-shirt! The design is unique
+									and the fabric feels so comfortable. As a fellow designer, I
+									appreciate the attention to detail. It&apos;s become my
+									favorite go-to shirt.&rdquo;
 								</p>
 
 								<p className="text-sm text-muted-foreground mt-4">
@@ -393,9 +387,10 @@ const ProductPage = async ({ params }: PageProps) => {
 								</div>
 
 								<p className="mt-4 text-gray-600">
-									"Great quality material and the fit is perfect. I've washed it
-									multiple times and it still looks brand new. Shipping was fast
-									too. Will definitely buy more colors!"
+									&ldquo;Great quality material and the fit is perfect.
+									I&apos;ve washed it multiple times and it still looks brand
+									new. Shipping was fast too. Will definitely buy more
+									colors!&rdquo;
 								</p>
 
 								<p className="text-sm text-muted-foreground mt-4">
@@ -425,9 +420,10 @@ const ProductPage = async ({ params }: PageProps) => {
 								</div>
 
 								<p className="mt-4 text-gray-600">
-									"The design is even better in person. I receive compliments
-									every time I wear it. Would recommend sizing up if you're
-									between sizes as it shrinks slightly after washing."
+									&ldquo;The design is even better in person. I receive
+									compliments every time I wear it. Would recommend sizing up if
+									you&apos;re between sizes as it shrinks slightly after
+									washing.&rdquo;
 								</p>
 
 								<p className="text-sm text-muted-foreground mt-4">
@@ -448,8 +444,8 @@ const ProductPage = async ({ params }: PageProps) => {
 							<AccordionTrigger>How does the sizing run?</AccordionTrigger>
 							<AccordionContent>
 								Our t-shirts follow standard sizing, but we recommend checking
-								the size chart for exact measurements. If you're between sizes
-								or prefer a looser fit, we recommend sizing up.
+								the size chart for exact measurements. If you&apos;re between
+								sizes or prefer a looser fit, we recommend sizing up.
 							</AccordionContent>
 						</AccordionItem>
 						<AccordionItem value="shipping">
@@ -465,7 +461,9 @@ const ProductPage = async ({ params }: PageProps) => {
 							</AccordionContent>
 						</AccordionItem>
 						<AccordionItem value="returns">
-							<AccordionTrigger>What's your return policy?</AccordionTrigger>
+							<AccordionTrigger>
+								What&apos;s your return policy?
+							</AccordionTrigger>
 							<AccordionContent>
 								We accept returns within 30 days of delivery. Items must be
 								unworn, unwashed, and have original tags attached. Return
