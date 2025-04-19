@@ -42,6 +42,7 @@ const CategoryPage = ({
 	params: {
 		category: string;
 	};
+	searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
 	const formattedCategoryName = () => {
 		return `${params.category[0].toUpperCase()}${params.category.slice(1)}`;
