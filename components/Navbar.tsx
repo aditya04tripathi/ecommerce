@@ -81,7 +81,7 @@ const Navbar = () => {
 				{/* Search and icons (right side) */}
 				<div className="flex gap-3 items-center justify-end">
 					{/* Desktop search bar */}
-					<div className="hidden md:flex relative items-center bg-gray-100 rounded-full px-4 py-2 w-72">
+					<div className="hidden md:flex relative items-center bg-gray-100 rounded px-4 w-72">
 						<Search className="w-4 h-4 text-gray-500" />
 						<Input
 							className="!shadow-none w-full border-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 pl-2 h-8"

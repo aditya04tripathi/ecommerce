@@ -26,31 +26,33 @@ const SOCIALS = [
 const FOOTER_LINKS = [
 	{
 		title: "COMPANY",
-		items: ["About", "Features", "Works", "Career"],
-		isLink: true,
-	},
-	{
-		title: "HELP",
 		items: [
-			"Customer Support",
-			"Delivery Details",
-			"Terms & Conditions",
-			"Privacy Policy",
+			{
+				name: "About Us",
+				href: "/about",
+			},
+			{
+				name: "Support",
+				href: "/support",
+			},
 		],
 		isLink: true,
 	},
 	{
-		title: "FAQ",
-		items: ["Account", "Manage Deliveries", "Orders", "Payment"],
-		isLink: true,
-	},
-	{
-		title: "RESOURCES",
+		title: "POLICIES",
 		items: [
-			"Free eBook",
-			"Development Tutorial",
-			"How to - Blog",
-			"Youtube Playlist",
+			{
+				name: "Privacy Policy",
+				href: "/privacy",
+			},
+			{
+				name: "Terms & Conditions",
+				href: "/terms",
+			},
+			{
+				name: "Delivery Details",
+				href: "/delivery",
+			},
 		],
 		isLink: true,
 	},
@@ -68,12 +70,12 @@ const Footer: React.FC = () => (
 					</h1>
 					<div className="flex flex-col space-y-4 mt-7 md:mt-0 md:w-1/2">
 						<Input
-							className="bg-white border-none rounded-full h-12 px-6"
+							className="bg-white border-none px-6"
 							type="email"
 							placeholder="Enter your email address"
 						/>
 						<Button
-							className="cursor-pointer rounded-full w-full h-12 bg-white text-black hover:bg-gray-200 font-medium"
+							className="cursor-pointer w-full font-medium"
 							variant={"secondary"}
 						>
 							Subscribe to Newsletter
@@ -106,27 +108,26 @@ const Footer: React.FC = () => (
 					</div>
 				</div>
 
-				<div className="grid grid-cols-2 gap-8 mt-10 md:mt-0 md:grid-cols-4 md:col-span-8">
+				<div className="grid grid-cols-2 gap-8 mt-10 md:mt-0 md:grid-cols-2 md:col-span-8">
 					{FOOTER_LINKS.map(({ title, items, isLink }) => (
 						<div className="space-y-4" key={title}>
 							<h3 className="font-bold text-lg">{title}</h3>
 							<ul className="space-y-2">
 								{items.map((item) =>
 									isLink ? (
-										<li key={item}>
-											<Link
-												href="#"
-												className="text-muted-foreground hover:text-foreground"
-											>
-												{item}
-											</Link>
-										</li>
+										<Link
+											key={item.href}
+											href={item.href}
+											className="block text-muted-foreground hover:text-foreground"
+										>
+											{item.name}
+										</Link>
 									) : (
 										<li
-											key={item}
+											key={item.href}
 											className="text-muted-foreground hover:text-foreground"
 										>
-											{item}
+											{item.name}
 										</li>
 									)
 								)}

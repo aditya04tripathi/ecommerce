@@ -27,18 +27,18 @@ const ProductCard = ({ product }: ProductCardProps) => {
 	return (
 		<Card
 			onClick={() => router.push(product.href)}
-			className="w-full !p-0 border-none overflow-clip shadow-none cursor-pointer"
+			className="w-full !p-0 border-none overflow-clip shadow-none rounded cursor-pointer"
 		>
-			<CardContent className="!p-0 relative">
+			<CardContent className="!p-0 relative group">
 				<Image
 					alt={product.name}
 					src={product.image || "https://picsum.photos/500"}
 					width={500}
 					height={500}
-					className="w-full h-auto overflow-clip aspect-square object-contain transition-transform duration-300"
+					className="w-full h-auto overflow-clip rounded aspect-square object-contain transition-transform duration-300"
 				/>
 				{product.discount && (
-					<div className="rounded-bl-full absolute top-0 right-0 bg-primary text-primary-foreground text-xs px-5 py-1">
+					<div className="group-hover:scale-110 transition rounded absolute top-2 right-2 bg-secondary text-secondary-foreground text-xs px-5 py-1">
 						{product.discount}
 					</div>
 				)}

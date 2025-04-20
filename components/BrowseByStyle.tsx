@@ -31,7 +31,7 @@ const DRESS_STYLES = [
 
 const BrowseByStyle = () => {
 	return (
-		<div className="container mx-auto mt-10 bg-secondary p-5 md:rounded-lg md:p-10">
+		<div className="container mx-auto mt-10 bg-secondary p-5 md:rounded md:p-10">
 			<h1 className="text-center text-secondary-foreground font-black text-3xl mb-5 md:mb-10">
 				BROWSE BY DRESS STYLE
 			</h1>
@@ -43,7 +43,7 @@ const BrowseByStyle = () => {
 						key={idx}
 					>
 						<Card
-							className={`w-full h-full !p-0 !border-secondary !shadow-none relative rounded-lg overflow-hidden cursor-pointer hover:shadow-md transition-shadow`}
+							className={`w-full h-full !p-0 !border-secondary !shadow-none relative rounded overflow-hidden cursor-pointer hover:shadow-md transition-shadow`}
 						>
 							<CardContent
 								className="p-0"

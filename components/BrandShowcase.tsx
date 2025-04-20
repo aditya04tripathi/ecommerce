@@ -13,7 +13,7 @@ const BrandShowcase = () => {
 					key={brand}
 					width={1080}
 					height={1080}
-					className="w-1/6 h-1/6 object-cover object-center rounded-md"
+					className="w-1/6 h-1/6 object-cover object-center rounded"
 				/>
 			))}
 		</div>

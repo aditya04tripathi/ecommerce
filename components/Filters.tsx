@@ -62,7 +62,7 @@ const Filters = ({ showHeader = true, className }: FiltersProps) => {
 						<div
 							key={idx}
 							style={{ backgroundColor: item }}
-							className="w-full h-auto aspect-square rounded-full border cursor-pointer hover:scale-105 transition-transform"
+							className="w-full h-auto aspect-square rounded border cursor-pointer hover:scale-105 transition-transform"
 						/>
 					))}
 				</div>
@@ -84,7 +84,7 @@ const Filters = ({ showHeader = true, className }: FiltersProps) => {
 					].map((item, idx) => (
 						<div
 							key={idx}
-							className="px-2.5 py-1 text-sm cursor-pointer bg-muted rounded-full text-muted-foreground"
+							className="px-2.5 py-1 text-sm cursor-pointer bg-muted rounded text-muted-foreground"
 						>
 							{item}
 						</div>
@@ -107,7 +107,7 @@ const Filters = ({ showHeader = true, className }: FiltersProps) => {
 				</div>
 			</div>
 
-			<Button className="w-full rounded-full">Apply Filters</Button>
+			<Button className="w-full rounded">Apply Filters</Button>
 		</div>
 	);
 };

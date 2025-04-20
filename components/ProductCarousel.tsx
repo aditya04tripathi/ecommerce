@@ -74,10 +74,7 @@ const ProductCarousel = (
 				))}
 			</div>
 
-			<Button
-				variant={"outline"}
-				className="cursor-pointer w-[calc(100%-40px)] md:w-fit md:mx-auto rounded-full mx-auto mt-8 px-12"
-			>
+			<Button className="cursor-pointer w-[calc(100%-40px)] md:w-fit md:mx-auto mx-auto mt-8 px-12">
 				View All
 			</Button>
 		</div>

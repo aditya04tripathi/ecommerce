@@ -1,6 +1,4 @@
-import { PageProps } from "@/.next/types/app/page";
 import React from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -18,14 +16,16 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { StarIcon, CheckIcon, ShoppingCartIcon } from "lucide-react";
+import { StarIcon, ShoppingCartIcon } from "lucide-react";
+import ProductImageGallery from "@/components/ProductImageGallery";
+import QuantitySelector from "@/components/QuantitySelector";
+import ReviewCard from "@/components/ReviewCard";
+import { PageProps } from "@/.next/types/app/page";
 
 const ProductPage = async ({ params }: PageProps) => {
 	const { productId } = await params;
 
-	// This would typically come from an API or database
 	const product = {
 		id: productId,
 		name: "ONE LIFE GRAPHIC T-SHIRT",
@@ -48,6 +48,33 @@ const ProductPage = async ({ params }: PageProps) => {
 		inStock: true,
 		tags: ["graphic", "t-shirt", "cotton", "comfortable"],
 	};
+
+	const reviews = [
+		{
+			rating: 4,
+			author: "Samantha D.",
+			content:
+				"I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt.",
+			date: "August 14, 2023",
+			isVerified: true,
+		},
+		{
+			rating: 5,
+			author: "Michael R.",
+			content:
+				"Great quality material and the fit is perfect. I've washed it multiple times and it still looks brand new. Shipping was fast too. Will definitely buy more colors!",
+			date: "July 29, 2023",
+			isVerified: true,
+		},
+		{
+			rating: 4,
+			author: "Jennifer T.",
+			content:
+				"The design is even better in person. I receive compliments every time I wear it. Would recommend sizing up if you're between sizes as it shrinks slightly after washing.",
+			date: "August 3, 2023",
+			isVerified: true,
+		},
+	];
 
 	return (
 		<div className="max-w-7xl mx-auto px-4">
@@ -72,45 +99,11 @@ const ProductPage = async ({ params }: PageProps) => {
 			</Breadcrumb>
 
 			<div className="flex flex-col md:flex-row gap-8">
-				<div className="flex flex-col md:flex-row gap-4 md:gap-6 flex-1 md:w-1/2">
-					{/* Main image for mobile view */}
-					<div className="md:hidden w-full bg-gray-100 rounded-lg mb-2">
-						<Image
-							src="https://picsum.photos/1000"
-							alt={product.name}
-							height={1000}
-							width={1000}
-							className="object-cover rounded-lg w-full h-auto"
-							priority
-						/>
-					</div>
-
-					<div className="grid grid-cols-3 md:grid-cols-1 gap-2 md:gap-4 md:flex-[0.25]">
-						{product.images.map((img, index) => (
-							<div key={index}>
-								<Image
-									src={img}
-									alt={`${product.name} view ${index + 1}`}
-									className="object-cover rounded-lg w-full h-full"
-									height={1000}
-									width={1000}
-								/>
-							</div>
-						))}
-					</div>
-
-					{/* Main image for desktop view (hidden on mobile) */}
-					<div className="hidden md:block flex-[0.75] bg-gray-100 rounded-lg">
-						<Image
-							src="https://picsum.photos/1000"
-							alt={product.name}
-							height={1000}
-							width={1000}
-							className="object-cover rounded-lg w-auto h-full"
-							priority
-						/>
-					</div>
-				</div>
+				<ProductImageGallery
+					images={product.images}
+					mainImage={product.images[0]}
+					productName={product.name}
+				/>
 
 				<div className="md:w-1/2">
 					<h1 className="text-3xl md:text-5xl font-bold mb-4">
@@ -124,31 +117,33 @@ const ProductPage = async ({ params }: PageProps) => {
 									key={i}
 									className={`h-5 w-5 ${
 										i < Math.floor(product.rating)
-											? "text-yellow-400 fill-yellow-400"
+											? "text-yellow-500 fill-yellow-500"
 											: i < product.rating
-											? "text-yellow-400 fill-yellow-400"
-											: "text-gray-300 fill-gray-300"
+											? "text-yellow-500 fill-yellow-500"
+											: "text-muted fill-muted"
 									}`}
 								/>
 							))}
 						</div>
-						<span className="ml-2 text-gray-600">{product.rating}/5</span>
-						<span className="ml-2 text-gray-400">
+						<span className="ml-2 text-muted-foreground">
+							{product.rating}/5
+						</span>
+						<span className="ml-2 text-muted-foreground">
 							({product.numReviews} reviews)
 						</span>
 					</div>
 
 					<div className="flex items-center gap-4 mb-6">
 						<span className="text-3xl font-bold">${product.currentPrice}</span>
-						<span className="text-2xl text-gray-400 line-through">
+						<span className="text-2xl text-muted-foreground line-through">
 							${product.originalPrice}
 						</span>
-						<span className="bg-red-100 text-red-600 px-2 py-1 rounded">
+						<span className="bg-destructive/10 text-destructive px-2 py-1">
 							-{product.discount}%
 						</span>
 					</div>
 
-					<p className="text-gray-600">{product.description}</p>
+					<p className="text-muted-foreground">{product.description}</p>
 
 					{product.inStock ? (
 						<Badge
@@ -160,13 +155,15 @@ const ProductPage = async ({ params }: PageProps) => {
 					) : (
 						<Badge
 							variant="outline"
-							className="mt-2 text-red-600 bg-red-50 border-red-200"
+							className="mt-2 text-destructive bg-destructive/10 border-destructive/20"
 						>
 							Out of Stock
 						</Badge>
 					)}
 
-					<p className="text-sm text-gray-500 mt-2">SKU: {product.sku}</p>
+					<p className="text-sm text-muted-foreground mt-2">
+						SKU: {product.sku}
+					</p>
 
 					<Separator className="my-5" />
 
@@ -175,8 +172,8 @@ const ProductPage = async ({ params }: PageProps) => {
 						{product.colors.map((color, index) => (
 							<Button
 								key={color}
-								className={`w-10 h-10 rounded-full ${
-									index === 0 ? "ring-2 ring-offset-2 ring-gray-800" : ""
+								className={`cursor-pointer w-10 h-10 rounded-full ${
+									index === 0 ? "ring-2 ring-offset-2 ring-primary" : ""
 								}`}
 								style={{ backgroundColor: color }}
 								aria-label={`Select ${color} color`}
@@ -192,7 +189,7 @@ const ProductPage = async ({ params }: PageProps) => {
 							<Button
 								key={size}
 								variant={size === "Large" ? "default" : "outline"}
-								className={`py-2 px-4 rounded-full ${
+								className={`cursor-pointer px-4 ${
 									size === "Large"
 										? "bg-primary text-primary-foreground"
 										: "hover:bg-primary/10"
@@ -207,18 +204,10 @@ const ProductPage = async ({ params }: PageProps) => {
 
 					<div className="flex items-center gap-4 mb-5">
 						<h3 className="font-medium">Quantity:</h3>
-						<div className="flex items-center border border-gray-300 rounded-full">
-							<Button variant="ghost" className="rounded-l-full px-3 h-10">
-								−
-							</Button>
-							<span className="w-10 text-center">1</span>
-							<Button variant="ghost" className="rounded-r-full px-3 h-10">
-								+
-							</Button>
-						</div>
+						<QuantitySelector />
 					</div>
 
-					<Button className="flex-grow py-3 px-6 rounded-full bg-primary text-primary-foreground w-full sm:w-auto">
+					<Button className="flex-grow py-3 px-6 bg-primary text-primary-foreground w-full sm:w-auto">
 						<ShoppingCartIcon className="mr-2 h-5 w-5" />
 						Add to Cart
 					</Button>
@@ -341,110 +330,20 @@ const ProductPage = async ({ params }: PageProps) => {
 								{product.numReviews} reviews
 							</p>
 						</div>
-						<Button className="mt-4 md:mt-0 bg-primary rounded-full">
-							Write a Review
-						</Button>
+						<Button className="mt-4 md:mt-0 bg-primary">Write a Review</Button>
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-						<Card>
-							<CardContent className="p-6">
-								<div className="flex justify-between">
-									<div className="flex text-yellow-400 text-lg">
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current opacity-50" />
-									</div>
-								</div>
-
-								<div className="flex items-center gap-2 mt-2">
-									<h4 className="font-semibold">Samantha D.</h4>
-									<Badge variant="secondary" className="rounded-full">
-										<CheckIcon className="h-3 w-3 text-green-500 mr-1" />
-										Verified
-									</Badge>
-								</div>
-
-								<p className="mt-4 text-gray-600">
-									&ldquo;I absolutely love this t-shirt! The design is unique
-									and the fabric feels so comfortable. As a fellow designer, I
-									appreciate the attention to detail. It&apos;s become my
-									favorite go-to shirt.&rdquo;
-								</p>
-
-								<p className="text-sm text-muted-foreground mt-4">
-									Posted on August 14, 2023
-								</p>
-							</CardContent>
-						</Card>
-
-						<Card>
-							<CardContent className="p-6">
-								<div className="flex justify-between">
-									<div className="flex text-yellow-400 text-lg">
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-									</div>
-								</div>
-
-								<div className="flex items-center gap-2 mt-2">
-									<h4 className="font-semibold">Michael R.</h4>
-									<Badge variant="secondary" className="rounded-full">
-										<CheckIcon className="h-3 w-3 text-green-500 mr-1" />
-										Verified
-									</Badge>
-								</div>
-
-								<p className="mt-4 text-gray-600">
-									&ldquo;Great quality material and the fit is perfect.
-									I&apos;ve washed it multiple times and it still looks brand
-									new. Shipping was fast too. Will definitely buy more
-									colors!&rdquo;
-								</p>
-
-								<p className="text-sm text-muted-foreground mt-4">
-									Posted on July 29, 2023
-								</p>
-							</CardContent>
-						</Card>
-
-						<Card>
-							<CardContent className="p-6">
-								<div className="flex justify-between">
-									<div className="flex text-yellow-400 text-lg">
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current" />
-										<StarIcon className="fill-current opacity-50" />
-									</div>
-								</div>
-
-								<div className="flex items-center gap-2 mt-2">
-									<h4 className="font-semibold">Jennifer T.</h4>
-									<Badge variant="secondary" className="rounded-full">
-										<CheckIcon className="h-3 w-3 text-green-500 mr-1" />
-										Verified
-									</Badge>
-								</div>
-
-								<p className="mt-4 text-gray-600">
-									&ldquo;The design is even better in person. I receive
-									compliments every time I wear it. Would recommend sizing up if
-									you&apos;re between sizes as it shrinks slightly after
-									washing.&rdquo;
-								</p>
-
-								<p className="text-sm text-muted-foreground mt-4">
-									Posted on August 3, 2023
-								</p>
-							</CardContent>
-						</Card>
+						{reviews.map((review, index) => (
+							<ReviewCard
+								key={index}
+								rating={review.rating}
+								author={review.author}
+								content={review.content}
+								date={review.date}
+								isVerified={review.isVerified}
+							/>
+						))}
 					</div>
 					<div className="flex w-full justify-center mt-8">
 						<Button variant="outline">Load More Reviews</Button>

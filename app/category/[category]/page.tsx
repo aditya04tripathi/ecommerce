@@ -182,7 +182,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 
 			<div className="flex w-full flex-1 gap-5">
 				{/* Desktop Filters */}
-				<div className="hidden md:block flex-[0.25] border rounded-lg p-5 h-fit">
+				<div className="hidden md:block flex-[0.25] border rounded p-5 h-fit">
 					<Filters />
 				</div>
 
@@ -196,11 +196,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 						{/* Mobile Filter Button */}
 						<Sheet>
 							<SheetTrigger asChild>
-								<Button
-									variant="outline"
-									size="sm"
-									className="flex items-center gap-2 md:hidden"
-								>
+								<Button className="flex items-center gap-2 md:hidden">
 									<Settings size={16} />
 									<span>Filters</span>
 								</Button>

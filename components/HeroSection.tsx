@@ -29,7 +29,7 @@ const HeroSection = () => {
 					designed to bring out your individuality and cater to your sense of
 					style.
 				</p>
-				<Button className="cursor-pointer mx-auto md:mx-0 w-[calc(100vw-40px)] md:w-fit md:px-10 rounded-full mb-5">
+				<Button className="cursor-pointer mx-auto md:mx-0 w-[calc(100vw-40px)] md:w-fit md:px-10 mb-5">
 					Shop Now
 				</Button>
 
@@ -69,7 +69,7 @@ const HeroSection = () => {
 							key={brand}
 							width={1080}
 							height={1080}
-							className="w-1/4 h-1/4 object-cover object-center rounded-md"
+							className="w-1/4 h-1/4 object-cover object-center rounded"
 						/>
 					)
 				)}
